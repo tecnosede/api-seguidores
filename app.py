@@ -10,12 +10,13 @@ def instagram_seguidores(usuario):
     perfil = instaloader.Profile.from_username(loader.context, usuario)
     return perfil.followers
 
-# Consultar seguidores TikTok
+# Consultar seguidores TikTok (CORRIGIDO)
 def tiktok_seguidores(usuario):
-    with TikTokApi() as api:
-        user = api.user(username=usuario)
-        info = user.info_full()
-        return info['stats']['followerCount']
+    api = TikTokApi()
+    user = api.user(username=usuario)
+    info = user.info_full()
+    api.shutdown()
+    return info['stats']['followerCount']
 
 # Rota principal da API
 @app.route('/seguidores', methods=['GET'])
