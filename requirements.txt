@@ -1,5 +1,3 @@
 flask
 instaloader
-TikTokApi
-playwright
 gunicorn
